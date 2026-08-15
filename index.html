@@ -31,6 +31,19 @@
             margin-bottom: 0;
         }
 
+        .cart-button {
+            display: block;
+            width: fit-content;
+            margin: 20px auto 0;
+            background: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
         .products {
             display: flex;
             flex-wrap: wrap;
@@ -60,14 +73,78 @@
             font-weight: bold;
         }
 
-        .whatsapp {
-            display: inline-block;
-            background: #25D366;
+        .add-cart {
+            background: #111;
             color: white;
+            border: none;
             padding: 12px 25px;
             border-radius: 25px;
-            text-decoration: none;
+            cursor: pointer;
+            font-size: 16px;
             margin-top: 10px;
+        }
+
+        .add-cart:hover {
+            background: #333;
+        }
+
+        #cart {
+            display: none;
+            background: white;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 600px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px #ccc;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quantity button {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 50%;
+            background: #111;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .total {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .whatsapp-order {
+            display: block;
+            background: #25D366;
+            color: white;
+            padding: 14px;
+            border-radius: 25px;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .empty {
+            text-align: center;
+            color: #777;
         }
 
         footer {
@@ -75,6 +152,7 @@
             color: white;
             text-align: center;
             padding: 20px;
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -84,6 +162,10 @@
     <header>
         <h1>🛍️ متجر الأناقة</h1>
         <p>ملابس عصرية بأسعار مناسبة</p>
+
+        <div class="cart-button" onclick="toggleCart()">
+            🛒 السلة (<span id="cartCount">0</span>)
+        </div>
     </header>
 
     <div class="products">
@@ -92,31 +174,178 @@
             <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab">
             <h2>تيشيرت أبيض</h2>
             <p class="price">350 جنيه</p>
-            <a class="واتساب" href="https://wa.me/201105569377" target="_blank">تواصل واتساب</a>
-
+            <button class="add-cart" onclick="addToCart('تيشيرت أبيض', 350)">
+                🛒 أضف للسلة
+            </button>
         </div>
 
         <div class="product">
             <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3">
             <h2>جاكت أسود</h2>
             <p class="price">650 جنيه</p>
-            <a class="واتساب" href="https://wa.me/201105569377" target="_blank">تواصل واتساب</a>
-
+            <button class="add-cart" onclick="addToCart('جاكت أسود', 650)">
+                🛒 أضف للسلة
+            </button>
         </div>
 
         <div class="product">
             <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5">
             <h2>هودي شتوي</h2>
             <p class="price">550 جنيه</p>
-      <a class="واتساب" href="https://wa.me/201105569377" target="_blank">تواصل واتساب</a>
-
+            <button class="add-cart" onclick="addToCart('هودي شتوي', 550)">
+                🛒 أضف للسلة
+            </button>
         </div>
 
+    </div>
+
+    <div id="cart">
+        <h2>🛒 سلة المشتريات</h2>
+
+        <div id="cartItems"></div>
+
+        <div class="total">
+            الإجمالي: <span id="total">0</span> جنيه
+        </div>
+
+        <a id="whatsappOrder"
+           class="whatsapp-order"
+           href="#"
+           target="_blank">
+            📲 إرسال الطلب على واتساب
+        </a>
     </div>
 
     <footer>
         جميع الحقوق محفوظة © 2026 متجر الأناقة
     </footer>
+
+    <script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            let item = cart.find(product => product.name === name);
+
+            if (item) {
+                item.quantity++;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+
+            updateCart();
+
+            alert("✅ تم إضافة المنتج إلى السلة");
+        }
+
+        function increase(index) {
+            cart[index].quantity++;
+            updateCart();
+        }
+
+        function decrease(index) {
+            cart[index].quantity--;
+
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartItems = document.getElementById("cartItems");
+            let cartCount = document.getElementById("cartCount");
+            let totalElement = document.getElementById("total");
+
+            cartItems.innerHTML = "";
+
+            let total = 0;
+            let count = 0;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="empty">السلة فارغة 🛒</p>';
+            }
+
+            cart.forEach((item, index) => {
+
+                let itemTotal = item.price * item.quantity;
+
+                total += itemTotal;
+                count += item.quantity;
+
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+
+                        <div>
+                            <strong>${item.name}</strong>
+                            <br>
+                            ${item.price} جنيه × ${item.quantity}
+                        </div>
+
+                        <div class="quantity">
+                            <button onclick="increase(${index})">+</button>
+
+                            <span>${item.quantity}</span>
+
+                            <button onclick="decrease(${index})">−</button>
+                        </div>
+
+                    </div>
+                `;
+            });
+
+            cartCount.innerText = count;
+            totalElement.innerText = total;
+
+            updateWhatsApp(total);
+        }
+
+        function updateWhatsApp(total) {
+
+            let message = "🛍️ طلب جديد من متجر الأناقة%0A%0A";
+
+            cart.forEach(item => {
+
+                let itemTotal = item.price * item.quantity;
+
+                message +=
+                    "📦 " + item.name +
+                    "%0Aالكمية: " + item.quantity +
+                    "%0Aالسعر: " + itemTotal + " جنيه%0A%0A";
+            });
+
+            message += "💰 الإجمالي: " + total + " جنيه";
+
+            let phone = "201105569377";
+
+            document.getElementById("whatsappOrder").href =
+                "https://wa.me/" + phone + "?text=" + message;
+        }
+
+        function toggleCart() {
+
+            let cartBox = document.getElementById("cart");
+
+            if (cartBox.style.display === "none" ||
+                cartBox.style.display === "") {
+
+                cartBox.style.display = "block";
+
+                cartBox.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            } else {
+                cartBox.style.display = "none";
+            }
+        }
+
+        updateCart();
+    </script>
 
 </body>
 </html>
