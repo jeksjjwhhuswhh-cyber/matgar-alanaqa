@@ -105,6 +105,40 @@
       resize: vertical;
     }
 
+    /* صندوق رفع الصورة */
+    .upload-box {
+      border: 2px dashed #b9ddf7;
+      background: #f8fcff;
+      border-radius: 10px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .upload-box input[type="file"] {
+      background: white;
+      cursor: pointer;
+    }
+
+    .preview-box {
+      display: none;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .preview-box p {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .preview-box img {
+      max-width: 100%;
+      max-height: 350px;
+      border-radius: 10px;
+      border: 1px solid #ccd3da;
+      padding: 5px;
+      background: white;
+    }
+
     .fee {
       background: #eef7ff;
       border: 1px solid #b9ddf7;
@@ -234,22 +268,17 @@
 
 <body>
 
-  <!-- رأس الموقع -->
   <header>
     <h1>العمالة غير المنتظمة 2026</h1>
     <p>خدمة تسجيل إلكترونية</p>
   </header>
 
-
   <main class="container">
 
-    <!-- تنبيه مهم -->
     <div class="notice">
-      
+      يرجى التأكد من صحة البيانات قبل إرسال الطلب.
     </div>
 
-
-    <!-- نموذج التسجيل -->
     <div class="card" id="registrationCard">
 
       <h2>تسجيل البيانات</h2>
@@ -269,7 +298,6 @@
               required>
           </div>
 
-
           <div class="field">
             <label for="phone">رقم الهاتف</label>
 
@@ -284,7 +312,6 @@
 
         </div>
 
-
         <div class="row">
 
           <div class="field">
@@ -292,9 +319,7 @@
 
             <select id="governorate" required>
 
-              <option value="">
-                اختر المحافظة
-              </option>
+              <option value="">اختر المحافظة</option>
 
               <option>القاهرة</option>
               <option>الجيزة</option>
@@ -326,7 +351,6 @@
             </select>
           </div>
 
-
           <div class="field">
             <label for="job">المهنة</label>
 
@@ -338,7 +362,6 @@
           </div>
 
         </div>
-
 
         <div class="field">
 
@@ -353,6 +376,37 @@
 
         </div>
 
+        <!-- رفع صورة إيصال التحويل -->
+        <div class="field">
+
+          <label for="paymentImage">
+            📷 صورة إيصال التحويل
+          </label>
+
+          <div class="upload-box">
+
+            <input
+              type="file"
+              id="paymentImage"
+              accept="image/*"
+              required>
+
+            <div
+              class="preview-box"
+              id="imagePreviewBox">
+
+              <p>معاينة الصورة:</p>
+
+              <img
+                id="imagePreview"
+                src=""
+                alt="معاينة إيصال التحويل">
+
+            </div>
+
+          </div>
+
+        </div>
 
         <!-- الرسوم والمحفظة -->
         <div class="fee">
@@ -365,19 +419,19 @@
             30 جنيه
           </span>
 
-
           <div class="wallet-label">
             رقم المحفظة لتحويل الرسوم:
           </div>
 
+          <div
+            class="wallet-number"
+            id="walletNumber">
 
-          <div class="wallet-number" id="walletNumber">
             01092166752
+
           </div>
 
-
           <br>
-
 
           <button
             type="button"
@@ -388,22 +442,14 @@
 
           </button>
 
-
           <div class="payment-info">
 
             بعد إتمام التحويل، احتفظ بإيصال الدفع
             للرجوع إليه عند الحاجة.
 
-            <br><br>
-
-            <strong>
-            
-            </strong>
-
           </div>
 
         </div>
-
 
         <button
           type="submit"
@@ -417,34 +463,30 @@
 
     </div>
 
-
     <!-- نتيجة التسجيل -->
-    <div class="success" id="successBox">
+    <div
+      class="success"
+      id="successBox">
 
       <h2>
         تم تسجيل الطلب بنجاح ✅
       </h2>
 
-
       <p id="resultName"></p>
-
 
       <p>
         رقم الطلب:
       </p>
-
 
       <div
         class="order"
         id="orderNumber">
       </div>
 
-
       <p>
         رسوم التسجيل:
         <strong>30 جنيه</strong>
       </p>
-
 
       <p>
         رقم المحفظة:
@@ -452,7 +494,6 @@
           01092166752
         </strong>
       </p>
-
 
       <button
         type="button"
@@ -467,20 +508,62 @@
 
   </main>
 
-
   <footer>
 
     العمالة غير المنتظمة 2026
     <br>
-    خدمة تسجيل إلكترونية 
+    خدمة تسجيل إلكترونية
 
   </footer>
-
 
   <script>
 
     // رقم المحفظة
     const walletNumber = "01092166752";
+
+
+    // معاينة صورة إيصال التحويل
+    document
+      .getElementById("paymentImage")
+      .addEventListener("change", function(event) {
+
+        const file = event.target.files[0];
+
+        if (!file) {
+          return;
+        }
+
+        // التأكد أن الملف صورة
+        if (!file.type.startsWith("image/")) {
+
+          alert("من فضلك اختر صورة فقط.");
+
+          event.target.value = "";
+
+          document
+            .getElementById("imagePreviewBox")
+            .style.display = "none";
+
+          return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+
+          document
+            .getElementById("imagePreview")
+            .src = e.target.result;
+
+          document
+            .getElementById("imagePreviewBox")
+            .style.display = "block";
+
+        };
+
+        reader.readAsDataURL(file);
+
+      });
 
 
     // تسجيل الطلب
@@ -490,19 +573,31 @@
 
         event.preventDefault();
 
-
         const name =
           document
             .getElementById("name")
             .value
             .trim();
 
-
         if (!name) {
+
           alert("من فضلك اكتب الاسم.");
+
           return;
         }
 
+        // التأكد من وجود صورة
+        const image =
+          document
+            .getElementById("paymentImage")
+            .files[0];
+
+        if (!image) {
+
+          alert("من فضلك أضف صورة إيصال التحويل.");
+
+          return;
+        }
 
         // إنشاء رقم طلب
         const orderNumber =
@@ -511,31 +606,26 @@
             .toString()
             .slice(-8);
 
-
         // عرض النتيجة
         document
           .getElementById("resultName")
           .textContent =
           "مرحبًا " + name;
 
-
         document
           .getElementById("orderNumber")
           .textContent =
           orderNumber;
-
 
         // إخفاء النموذج
         document
           .getElementById("registrationCard")
           .style.display = "none";
 
-
         // إظهار النتيجة
         document
           .getElementById("successBox")
           .style.display = "block";
-
 
         window.scrollTo({
           top: 0,
