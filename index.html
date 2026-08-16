@@ -1,351 +1,575 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>متجر الأناقة</title>
+  <title>العمالة غير المنتظمة 2026</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            color: #222;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Tahoma, Arial, sans-serif;
+    }
 
-        header {
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 25px 10px;
-        }
+    body {
+      margin: 0;
+      background: #f3f6f9;
+      color: #222;
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 30px;
-        }
+    header {
+      background: #075985;
+      color: white;
+      text-align: center;
+      padding: 28px 15px;
+    }
 
-        header p {
-            margin-bottom: 0;
-        }
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+    }
 
-        .cart-button {
-            display: block;
-            width: fit-content;
-            margin: 20px auto 0;
-            background: #25D366;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-        }
+    header p {
+      margin: 0;
+      font-size: 16px;
+    }
 
-        .products {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 25px;
-        }
+    .notice {
+      max-width: 850px;
+      margin: 20px auto;
+      padding: 13px;
+      background: #fff3cd;
+      color: #664d03;
+      border: 1px solid #ffecb5;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 14px;
+    }
 
-        .product {
-            background: white;
-            width: 280px;
-            padding: 15px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 12px #ccc;
-        }
+    .container {
+      max-width: 850px;
+      margin: auto;
+      padding: 0 15px;
+    }
 
-        .product img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.08);
+      margin-bottom: 20px;
+    }
 
-        .price {
-            font-size: 20px;
-            font-weight: bold;
-        }
+    h2 {
+      margin-top: 0;
+      color: #075985;
+      text-align: center;
+    }
 
-        .add-cart {
-            background: #111;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-        }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
 
-        .add-cart:hover {
-            background: #333;
-        }
+    .field {
+      margin-bottom: 16px;
+    }
 
-        #cart {
-            display: none;
-            background: white;
-            margin: 20px auto;
-            padding: 20px;
-            max-width: 600px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px #ccc;
-        }
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: bold;
+    }
 
-        .cart-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            padding: 12px 0;
-            border-bottom: 1px solid #ddd;
-        }
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccd3da;
+      border-radius: 7px;
+      font-size: 15px;
+      outline: none;
+    }
 
-        .quantity {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #075985;
+    }
 
-        .quantity button {
-            width: 32px;
-            height: 32px;
-            border: none;
-            border-radius: 50%;
-            background: #111;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-        }
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
 
-        .total {
-            font-size: 22px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
+    .fee {
+      background: #eef7ff;
+      border: 1px solid #b9ddf7;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: center;
+    }
 
-        .whatsapp-order {
-            display: block;
-            background: #25D366;
-            color: white;
-            padding: 14px;
-            border-radius: 25px;
-            text-align: center;
-            text-decoration: none;
-            margin-top: 20px;
-            font-weight: bold;
-        }
+    .fee-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
 
-        .empty {
-            text-align: center;
-            color: #777;
-        }
+    .amount {
+      display: block;
+      font-size: 30px;
+      font-weight: bold;
+      color: #075985;
+      margin: 8px 0 15px;
+    }
 
-        footer {
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-        }
-    </style>
+    .wallet-label {
+      margin-bottom: 8px;
+    }
+
+    .wallet-number {
+      direction: ltr;
+      display: inline-block;
+      font-size: 22px;
+      font-weight: bold;
+      color: #075985;
+      background: white;
+      padding: 10px 15px;
+      border-radius: 7px;
+      border: 1px solid #c7ddea;
+      letter-spacing: 1px;
+    }
+
+    .copy-btn {
+      width: auto;
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 14px;
+      background: #198754;
+    }
+
+    .copy-btn:hover {
+      background: #157347;
+    }
+
+    .payment-info {
+      margin-top: 15px;
+      padding: 12px;
+      background: #fff;
+      border-radius: 7px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .main-btn {
+      width: 100%;
+      border: 0;
+      padding: 14px;
+      border-radius: 8px;
+      background: #075985;
+      color: white;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    .main-btn:hover {
+      background: #064e73;
+    }
+
+    .success {
+      display: none;
+      text-align: center;
+      padding: 25px;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 10px;
+      color: #065f46;
+      margin-bottom: 20px;
+    }
+
+    .success h2 {
+      color: #065f46;
+    }
+
+    .order {
+      background: white;
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 7px;
+      margin: 10px 0;
+      font-weight: bold;
+      direction: ltr;
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+      padding: 25px 15px;
+    }
+
+    @media (max-width: 650px) {
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 23px;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      .wallet-number {
+        font-size: 19px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>🛍️ متجر الأناقة</h1>
-        <p>ملابس عصرية بأسعار مناسبة</p>
+  <!-- رأس الموقع -->
+  <header>
+    <h1>العمالة غير المنتظمة 2026</h1>
+    <p>خدمة تسجيل إلكترونية</p>
+  </header>
 
-        <div class="cart-button" onclick="toggleCart()">
-            🛒 السلة (<span id="cartCount">0</span>)
+
+  <main class="container">
+
+    <!-- تنبيه مهم -->
+    <div class="notice">
+      
+    </div>
+
+
+    <!-- نموذج التسجيل -->
+    <div class="card" id="registrationCard">
+
+      <h2>تسجيل البيانات</h2>
+
+      <form id="registrationForm">
+
+        <div class="row">
+
+          <div class="field">
+            <label for="name">الاسم الكامل</label>
+
+            <input
+              type="text"
+              id="name"
+              placeholder="اكتب الاسم الكامل"
+              autocomplete="name"
+              required>
+          </div>
+
+
+          <div class="field">
+            <label for="phone">رقم الهاتف</label>
+
+            <input
+              type="tel"
+              id="phone"
+              placeholder="01xxxxxxxxx"
+              inputmode="numeric"
+              autocomplete="tel"
+              required>
+          </div>
+
         </div>
-    </header>
 
-    <div class="products">
 
-        <div class="product">
-            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab">
-            <h2>تيشيرت أبيض</h2>
-            <p class="price">350 جنيه</p>
-            <button class="add-cart" onclick="addToCart('تيشيرت أبيض', 350)">
-                🛒 أضف للسلة
-            </button>
+        <div class="row">
+
+          <div class="field">
+            <label for="governorate">المحافظة</label>
+
+            <select id="governorate" required>
+
+              <option value="">
+                اختر المحافظة
+              </option>
+
+              <option>القاهرة</option>
+              <option>الجيزة</option>
+              <option>القليوبية</option>
+              <option>الإسكندرية</option>
+              <option>الشرقية</option>
+              <option>الدقهلية</option>
+              <option>البحيرة</option>
+              <option>المنوفية</option>
+              <option>الغربية</option>
+              <option>كفر الشيخ</option>
+              <option>دمياط</option>
+              <option>بورسعيد</option>
+              <option>الإسماعيلية</option>
+              <option>السويس</option>
+              <option>الفيوم</option>
+              <option>بني سويف</option>
+              <option>المنيا</option>
+              <option>أسيوط</option>
+              <option>سوهاج</option>
+              <option>قنا</option>
+              <option>الأقصر</option>
+              <option>أسوان</option>
+              <option>مطروح</option>
+              <option>الوادي الجديد</option>
+              <option>شمال سيناء</option>
+              <option>جنوب سيناء</option>
+
+            </select>
+          </div>
+
+
+          <div class="field">
+            <label for="job">المهنة</label>
+
+            <input
+              type="text"
+              id="job"
+              placeholder="مثال: عامل بناء"
+              required>
+          </div>
+
         </div>
 
-        <div class="product">
-            <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3">
-            <h2>جاكت أسود</h2>
-            <p class="price">650 جنيه</p>
-            <button class="add-cart" onclick="addToCart('جاكت أسود', 650)">
-                🛒 أضف للسلة
-            </button>
+
+        <div class="field">
+
+          <label for="address">
+            العنوان
+          </label>
+
+          <textarea
+            id="address"
+            placeholder="اكتب العنوان"
+            required></textarea>
+
         </div>
 
-        <div class="product">
-            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5">
-            <h2>هودي شتوي</h2>
-            <p class="price">550 جنيه</p>
-            <button class="add-cart" onclick="addToCart('هودي شتوي', 550)">
-                🛒 أضف للسلة
-            </button>
+
+        <!-- الرسوم والمحفظة -->
+        <div class="fee">
+
+          <div class="fee-title">
+            رسوم التسجيل
+          </div>
+
+          <span class="amount">
+            30 جنيه
+          </span>
+
+
+          <div class="wallet-label">
+            رقم المحفظة لتحويل الرسوم:
+          </div>
+
+
+          <div class="wallet-number" id="walletNumber">
+            01092166752
+          </div>
+
+
+          <br>
+
+
+          <button
+            type="button"
+            class="main-btn copy-btn"
+            onclick="copyWallet()">
+
+            📋 نسخ رقم المحفظة
+
+          </button>
+
+
+          <div class="payment-info">
+
+            بعد إتمام التحويل، احتفظ بإيصال الدفع
+            للرجوع إليه عند الحاجة.
+
+            <br><br>
+
+            <strong>
+            
+            </strong>
+
+          </div>
+
         </div>
+
+
+        <button
+          type="submit"
+          class="main-btn">
+
+          متابعة التسجيل
+
+        </button>
+
+      </form>
 
     </div>
 
-    <div id="cart">
-        <h2>🛒 سلة المشتريات</h2>
 
-        <div id="cartItems"></div>
+    <!-- نتيجة التسجيل -->
+    <div class="success" id="successBox">
 
-        <div class="total">
-            الإجمالي: <span id="total">0</span> جنيه
-        </div>
+      <h2>
+        تم تسجيل الطلب بنجاح ✅
+      </h2>
 
-        <a id="whatsappOrder"
-           class="whatsapp-order"
-           href="#"
-           target="_blank">
-            📲 إرسال الطلب على واتساب
-        </a>
+
+      <p id="resultName"></p>
+
+
+      <p>
+        رقم الطلب:
+      </p>
+
+
+      <div
+        class="order"
+        id="orderNumber">
+      </div>
+
+
+      <p>
+        رسوم التسجيل:
+        <strong>30 جنيه</strong>
+      </p>
+
+
+      <p>
+        رقم المحفظة:
+        <strong dir="ltr">
+          01092166752
+        </strong>
+      </p>
+
+
+      <button
+        type="button"
+        class="main-btn"
+        onclick="copyWallet()">
+
+        📋 نسخ رقم المحفظة
+
+      </button>
+
     </div>
 
-    <footer>
-        جميع الحقوق محفوظة © 2026 متجر الأناقة
-    </footer>
+  </main>
 
-    <script>
-        let cart = [];
 
-        function addToCart(name, price) {
-            let item = cart.find(product => product.name === name);
+  <footer>
 
-            if (item) {
-                item.quantity++;
-            } else {
-                cart.push({
-                    name: name,
-                    price: price,
-                    quantity: 1
-                });
-            }
+    العمالة غير المنتظمة 2026
+    <br>
+    خدمة تسجيل إلكترونية 
 
-            updateCart();
+  </footer>
 
-            alert("✅ تم إضافة المنتج إلى السلة");
+
+  <script>
+
+    // رقم المحفظة
+    const walletNumber = "01092166752";
+
+
+    // تسجيل الطلب
+    document
+      .getElementById("registrationForm")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        const name =
+          document
+            .getElementById("name")
+            .value
+            .trim();
+
+
+        if (!name) {
+          alert("من فضلك اكتب الاسم.");
+          return;
         }
 
-        function increase(index) {
-            cart[index].quantity++;
-            updateCart();
-        }
 
-        function decrease(index) {
-            cart[index].quantity--;
+        // إنشاء رقم طلب
+        const orderNumber =
+          "REG-" +
+          Date.now()
+            .toString()
+            .slice(-8);
 
-            if (cart[index].quantity <= 0) {
-                cart.splice(index, 1);
-            }
 
-            updateCart();
-        }
+        // عرض النتيجة
+        document
+          .getElementById("resultName")
+          .textContent =
+          "مرحبًا " + name;
 
-        function updateCart() {
-            let cartItems = document.getElementById("cartItems");
-            let cartCount = document.getElementById("cartCount");
-            let totalElement = document.getElementById("total");
 
-            cartItems.innerHTML = "";
+        document
+          .getElementById("orderNumber")
+          .textContent =
+          orderNumber;
 
-            let total = 0;
-            let count = 0;
 
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p class="empty">السلة فارغة 🛒</p>';
-            }
+        // إخفاء النموذج
+        document
+          .getElementById("registrationCard")
+          .style.display = "none";
 
-            cart.forEach((item, index) => {
 
-                let itemTotal = item.price * item.quantity;
+        // إظهار النتيجة
+        document
+          .getElementById("successBox")
+          .style.display = "block";
 
-                total += itemTotal;
-                count += item.quantity;
 
-                cartItems.innerHTML += `
-                    <div class="cart-item">
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
 
-                        <div>
-                            <strong>${item.name}</strong>
-                            <br>
-                            ${item.price} جنيه × ${item.quantity}
-                        </div>
+      });
 
-                        <div class="quantity">
-                            <button onclick="increase(${index})">+</button>
 
-                            <span>${item.quantity}</span>
+    // نسخ رقم المحفظة
+    function copyWallet() {
 
-                            <button onclick="decrease(${index})">−</button>
-                        </div>
+      navigator.clipboard
+        .writeText(walletNumber)
+        .then(function() {
 
-                    </div>
-                `;
-            });
+          alert(
+            "تم نسخ رقم المحفظة: " +
+            walletNumber
+          );
 
-            cartCount.innerText = count;
-            totalElement.innerText = total;
+        })
+        .catch(function() {
 
-            updateWhatsApp(total);
-        }
+          alert(
+            "رقم المحفظة: " +
+            walletNumber
+          );
 
-        function updateWhatsApp(total) {
+        });
 
-            let message = "🛍️ طلب جديد من متجر الأناقة%0A%0A";
+    }
 
-            cart.forEach(item => {
-
-                let itemTotal = item.price * item.quantity;
-
-                message +=
-                    "📦 " + item.name +
-                    "%0Aالكمية: " + item.quantity +
-                    "%0Aالسعر: " + itemTotal + " جنيه%0A%0A";
-            });
-
-            message += "💰 الإجمالي: " + total + " جنيه";
-
-            let phone = "201105569377";
-
-            document.getElementById("whatsappOrder").href =
-                "https://wa.me/" + phone + "?text=" + message;
-        }
-
-        function toggleCart() {
-
-            let cartBox = document.getElementById("cart");
-
-            if (cartBox.style.display === "none" ||
-                cartBox.style.display === "") {
-
-                cartBox.style.display = "block";
-
-                cartBox.scrollIntoView({
-                    behavior: "smooth"
-                });
-
-            } else {
-                cartBox.style.display = "none";
-            }
-        }
-
-        updateCart();
-    </script>
+  </script>
 
 </body>
 </html>
