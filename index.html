@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>العمالة غير المنتظمة 2026</title>
 
   <style>
@@ -286,8 +287,8 @@
 <body>
 
 <header>
-  <h1العمالهالغيرمنتظمة</h1
-  <p></p>
+  <h1>العمالة غير المنتظمة 2026</h1>
+ 
 </header>
 
 <main class="container">
@@ -418,9 +419,7 @@
             class="preview-box"
             id="previewBox">
 
-            <p>
-              معاينة الصورة
-            </p>
+            <p>معاينة الصورة</p>
 
             <img
               id="imagePreview"
@@ -479,7 +478,7 @@
 
         <div class="payment-info">
 
-          بعد إتمام التحويل، ارسل لقطه شاشه باالتحويل
+          بعد إتمام التحويل، ارسل صور التحويل
 
         </div>
 
@@ -510,9 +509,7 @@
 
     <p id="resultName"></p>
 
-    <p>
-      رقم الطلب:
-    </p>
+    <p>رقم الطلب:</p>
 
     <div
       class="order"
@@ -547,7 +544,7 @@
 
 <footer>
 
-  خدمة تسجيل حكومية 
+  العمالة غير المنتظمة 2026
   <br>
   
 
@@ -558,8 +555,6 @@
 
   const walletNumber = "01092166752";
 
-
-  // اختيار الصورة
   const paymentImage =
     document.getElementById("paymentImage");
 
@@ -573,6 +568,7 @@
     document.getElementById("deleteImage");
 
 
+  // اختيار الصورة
   paymentImage.addEventListener(
     "change",
     function() {
@@ -583,7 +579,6 @@
         return;
       }
 
-      // التأكد أن الملف صورة
       if (!file.type.startsWith("image/")) {
 
         alert("من فضلك اختر صورة فقط.");
@@ -595,8 +590,6 @@
         return;
       }
 
-
-      // عرض الصورة فقط على جهاز المستخدم
       const imageURL =
         URL.createObjectURL(file);
 
@@ -638,7 +631,6 @@
             .value
             .trim();
 
-
         if (!name) {
 
           alert("من فضلك اكتب الاسم.");
@@ -647,37 +639,31 @@
 
         }
 
-
         const orderNumber =
           "REG-" +
           Date.now()
             .toString()
             .slice(-8);
 
-
         document
           .getElementById("resultName")
           .textContent =
           "مرحبًا " + name;
-
 
         document
           .getElementById("orderNumber")
           .textContent =
           orderNumber;
 
-
         document
           .getElementById("registrationCard")
           .style.display =
           "none";
 
-
         document
           .getElementById("successBox")
           .style.display =
           "block";
-
 
         window.scrollTo({
           top: 0,
