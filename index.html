@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>العمالة غير المنتظمة 2026</title>
+  <title>خدمة تسجيل خاصة</title>
 
   <style>
     * {
@@ -94,40 +94,47 @@
       outline: none;
     }
 
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
     input:focus,
     select:focus,
     textarea:focus {
       border-color: #075985;
     }
 
-    textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    /* صندوق رفع الصورة */
+    /* رفع الصورة */
     .upload-box {
       border: 2px dashed #b9ddf7;
       background: #f8fcff;
       border-radius: 10px;
-      padding: 18px;
+      padding: 20px;
       text-align: center;
     }
 
-    .upload-box input[type="file"] {
-      background: white;
+    .upload-button {
+      display: inline-block;
+      background: #075985;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
       cursor: pointer;
+      font-weight: bold;
+    }
+
+    .upload-button:hover {
+      background: #064e73;
+    }
+
+    #paymentImage {
+      display: none;
     }
 
     .preview-box {
       display: none;
       margin-top: 15px;
-      text-align: center;
-    }
-
-    .preview-box p {
-      font-weight: bold;
-      margin-bottom: 10px;
     }
 
     .preview-box img {
@@ -137,6 +144,17 @@
       border: 1px solid #ccd3da;
       padding: 5px;
       background: white;
+    }
+
+    .delete-image {
+      display: block;
+      margin: 10px auto 0;
+      border: 0;
+      background: #dc3545;
+      color: white;
+      padding: 9px 18px;
+      border-radius: 7px;
+      cursor: pointer;
     }
 
     .fee {
@@ -268,308 +286,350 @@
 
 <body>
 
-  <header>
-    <h1>العمالة غير المنتظمة 2026</h1>
-    <p>خدمة تسجيل إلكترونية</p>
-  </header>
+<header>
+  <h1>خدمة تسجيل خاصة</h1>
+  <p>هذه الخدمة خاصة وليست جهة حكومية</p>
+</header>
 
-  <main class="container">
+<main class="container">
 
-    <div class="notice">
-      يرجى التأكد من صحة البيانات قبل إرسال الطلب.
-    </div>
+  <div class="notice">
+    يرجى التأكد من صحة البيانات قبل متابعة التسجيل.
+  </div>
 
-    <div class="card" id="registrationCard">
+  <div class="card" id="registrationCard">
 
-      <h2>تسجيل البيانات</h2>
+    <h2>تسجيل البيانات</h2>
 
-      <form id="registrationForm">
+    <form id="registrationForm">
 
-        <div class="row">
+      <div class="row">
 
-          <div class="field">
-            <label for="name">الاسم الكامل</label>
+        <div class="field">
+          <label for="name">الاسم الكامل</label>
 
-            <input
-              type="text"
-              id="name"
-              placeholder="اكتب الاسم الكامل"
-              autocomplete="name"
-              required>
-          </div>
-
-          <div class="field">
-            <label for="phone">رقم الهاتف</label>
-
-            <input
-              type="tel"
-              id="phone"
-              placeholder="01xxxxxxxxx"
-              inputmode="numeric"
-              autocomplete="tel"
-              required>
-          </div>
-
-        </div>
-
-        <div class="row">
-
-          <div class="field">
-            <label for="governorate">المحافظة</label>
-
-            <select id="governorate" required>
-
-              <option value="">اختر المحافظة</option>
-
-              <option>القاهرة</option>
-              <option>الجيزة</option>
-              <option>القليوبية</option>
-              <option>الإسكندرية</option>
-              <option>الشرقية</option>
-              <option>الدقهلية</option>
-              <option>البحيرة</option>
-              <option>المنوفية</option>
-              <option>الغربية</option>
-              <option>كفر الشيخ</option>
-              <option>دمياط</option>
-              <option>بورسعيد</option>
-              <option>الإسماعيلية</option>
-              <option>السويس</option>
-              <option>الفيوم</option>
-              <option>بني سويف</option>
-              <option>المنيا</option>
-              <option>أسيوط</option>
-              <option>سوهاج</option>
-              <option>قنا</option>
-              <option>الأقصر</option>
-              <option>أسوان</option>
-              <option>مطروح</option>
-              <option>الوادي الجديد</option>
-              <option>شمال سيناء</option>
-              <option>جنوب سيناء</option>
-
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="job">المهنة</label>
-
-            <input
-              type="text"
-              id="job"
-              placeholder="مثال: عامل بناء"
-              required>
-          </div>
-
+          <input
+            type="text"
+            id="name"
+            placeholder="اكتب الاسم الكامل"
+            autocomplete="name"
+            required>
         </div>
 
         <div class="field">
+          <label for="phone">رقم الهاتف</label>
 
-          <label for="address">
-            العنوان
-          </label>
-
-          <textarea
-            id="address"
-            placeholder="اكتب العنوان"
-            required></textarea>
-
+          <input
+            type="tel"
+            id="phone"
+            placeholder="01xxxxxxxxx"
+            inputmode="numeric"
+            autocomplete="tel"
+            required>
         </div>
 
-        <!-- رفع صورة إيصال التحويل -->
+      </div>
+
+      <div class="row">
+
         <div class="field">
+          <label for="governorate">المحافظة</label>
 
-          <label for="paymentImage">
-            📷 صورة إيصال التحويل
-          </label>
+          <select id="governorate" required>
 
-          <div class="upload-box">
+            <option value="">اختر المحافظة</option>
 
-            <input
-              type="file"
-              id="paymentImage"
-              accept="image/*"
-              required>
+            <option>القاهرة</option>
+            <option>الجيزة</option>
+            <option>القليوبية</option>
+            <option>الإسكندرية</option>
+            <option>الشرقية</option>
+            <option>الدقهلية</option>
+            <option>البحيرة</option>
+            <option>المنوفية</option>
+            <option>الغربية</option>
+            <option>كفر الشيخ</option>
+            <option>دمياط</option>
+            <option>بورسعيد</option>
+            <option>الإسماعيلية</option>
+            <option>السويس</option>
+            <option>الفيوم</option>
+            <option>بني سويف</option>
+            <option>المنيا</option>
+            <option>أسيوط</option>
+            <option>سوهاج</option>
+            <option>قنا</option>
+            <option>الأقصر</option>
+            <option>أسوان</option>
+            <option>مطروح</option>
+            <option>الوادي الجديد</option>
+            <option>شمال سيناء</option>
+            <option>جنوب سيناء</option>
 
-            <div
-              class="preview-box"
-              id="imagePreviewBox">
-
-              <p>معاينة الصورة:</p>
-
-              <img
-                id="imagePreview"
-                src=""
-                alt="معاينة إيصال التحويل">
-
-            </div>
-
-          </div>
-
+          </select>
         </div>
 
-        <!-- الرسوم والمحفظة -->
-        <div class="fee">
+        <div class="field">
+          <label for="job">المهنة</label>
 
-          <div class="fee-title">
-            رسوم التسجيل
-          </div>
+          <input
+            type="text"
+            id="job"
+            placeholder="مثال: عامل بناء"
+            required>
+        </div>
 
-          <span class="amount">
-            30 جنيه
-          </span>
+      </div>
 
-          <div class="wallet-label">
-            رقم المحفظة لتحويل الرسوم:
-          </div>
+      <div class="field">
+
+        <label for="address">العنوان</label>
+
+        <textarea
+          id="address"
+          placeholder="اكتب العنوان"
+          required></textarea>
+
+      </div>
+
+
+      <!-- إضافة صورة -->
+      <div class="field">
+
+        <label>
+          📷 إضافة صورة
+        </label>
+
+        <div class="upload-box">
+
+          <label
+            for="paymentImage"
+            class="upload-button">
+
+            📷 اختيار صورة من الهاتف
+
+          </label>
+
+          <input
+            type="file"
+            id="paymentImage"
+            accept="image/*">
 
           <div
-            class="wallet-number"
-            id="walletNumber">
+            class="preview-box"
+            id="previewBox">
 
-            01092166752
+            <p>
+              معاينة الصورة
+            </p>
 
-          </div>
+            <img
+              id="imagePreview"
+              src=""
+              alt="معاينة الصورة">
 
-          <br>
+            <button
+              type="button"
+              class="delete-image"
+              id="deleteImage">
 
-          <button
-            type="button"
-            class="main-btn copy-btn"
-            onclick="copyWallet()">
+              🗑️ حذف الصورة
 
-            📋 نسخ رقم المحفظة
-
-          </button>
-
-          <div class="payment-info">
-
-            بعد إتمام التحويل، احتفظ بإيصال الدفع
-            للرجوع إليه عند الحاجة.
+            </button>
 
           </div>
 
         </div>
 
-        <button
-          type="submit"
-          class="main-btn">
+      </div>
 
-          متابعة التسجيل
+
+      <!-- الرسوم -->
+      <div class="fee">
+
+        <div class="fee-title">
+          رسوم التسجيل
+        </div>
+
+        <span class="amount">
+          30 جنيه
+        </span>
+
+        <div class="wallet-label">
+          رقم المحفظة لتحويل الرسوم:
+        </div>
+
+        <div
+          class="wallet-number"
+          id="walletNumber">
+
+          01092166752
+
+        </div>
+
+        <br>
+
+        <button
+          type="button"
+          class="main-btn copy-btn"
+          onclick="copyWallet()">
+
+          📋 نسخ رقم المحفظة
 
         </button>
 
-      </form>
+        <div class="payment-info">
 
-    </div>
+          بعد إتمام التحويل، احتفظ بإيصال الدفع
+          للرجوع إليه عند الحاجة.
 
-    <!-- نتيجة التسجيل -->
-    <div
-      class="success"
-      id="successBox">
+        </div>
 
-      <h2>
-        تم تسجيل الطلب بنجاح ✅
-      </h2>
-
-      <p id="resultName"></p>
-
-      <p>
-        رقم الطلب:
-      </p>
-
-      <div
-        class="order"
-        id="orderNumber">
       </div>
 
-      <p>
-        رسوم التسجيل:
-        <strong>30 جنيه</strong>
-      </p>
-
-      <p>
-        رقم المحفظة:
-        <strong dir="ltr">
-          01092166752
-        </strong>
-      </p>
 
       <button
-        type="button"
-        class="main-btn"
-        onclick="copyWallet()">
+        type="submit"
+        class="main-btn">
 
-        📋 نسخ رقم المحفظة
+        متابعة التسجيل
 
       </button>
 
+    </form>
+
+  </div>
+
+
+  <!-- نتيجة التسجيل -->
+  <div
+    class="success"
+    id="successBox">
+
+    <h2>
+      تم تسجيل الطلب بنجاح ✅
+    </h2>
+
+    <p id="resultName"></p>
+
+    <p>
+      رقم الطلب:
+    </p>
+
+    <div
+      class="order"
+      id="orderNumber">
     </div>
 
-  </main>
+    <p>
+      رسوم التسجيل:
+      <strong>30 جنيه</strong>
+    </p>
 
-  <footer>
+    <p>
+      رقم المحفظة:
+      <strong dir="ltr">
+        01092166752
+      </strong>
+    </p>
 
-    العمالة غير المنتظمة 2026
-    <br>
-    خدمة تسجيل إلكترونية
+    <button
+      type="button"
+      class="main-btn"
+      onclick="copyWallet()">
 
-  </footer>
+      📋 نسخ رقم المحفظة
 
-  <script>
+    </button>
 
-    // رقم المحفظة
-    const walletNumber = "01092166752";
+  </div>
 
-
-    // معاينة صورة إيصال التحويل
-    document
-      .getElementById("paymentImage")
-      .addEventListener("change", function(event) {
-
-        const file = event.target.files[0];
-
-        if (!file) {
-          return;
-        }
-
-        // التأكد أن الملف صورة
-        if (!file.type.startsWith("image/")) {
-
-          alert("من فضلك اختر صورة فقط.");
-
-          event.target.value = "";
-
-          document
-            .getElementById("imagePreviewBox")
-            .style.display = "none";
-
-          return;
-        }
-
-        const reader = new FileReader();
-
-        reader.onload = function(e) {
-
-          document
-            .getElementById("imagePreview")
-            .src = e.target.result;
-
-          document
-            .getElementById("imagePreviewBox")
-            .style.display = "block";
-
-        };
-
-        reader.readAsDataURL(file);
-
-      });
+</main>
 
 
-    // تسجيل الطلب
-    document
-      .getElementById("registrationForm")
-      .addEventListener("submit", function(event) {
+<footer>
+
+خدمات تسجيل حكومي <br>
+  
+
+</footer>
+
+
+<script>
+
+  const walletNumber = "01092166752";
+
+
+  // اختيار الصورة
+  const paymentImage =
+    document.getElementById("paymentImage");
+
+  const previewBox =
+    document.getElementById("previewBox");
+
+  const imagePreview =
+    document.getElementById("imagePreview");
+
+  const deleteImage =
+    document.getElementById("deleteImage");
+
+
+  paymentImage.addEventListener(
+    "change",
+    function() {
+
+      const file = this.files[0];
+
+      if (!file) {
+        return;
+      }
+
+      // التأكد أن الملف صورة
+      if (!file.type.startsWith("image/")) {
+
+        alert("من فضلك اختر صورة فقط.");
+
+        this.value = "";
+
+        previewBox.style.display = "none";
+
+        return;
+      }
+
+
+      // عرض الصورة فقط على جهاز المستخدم
+      const imageURL =
+        URL.createObjectURL(file);
+
+      imagePreview.src = imageURL;
+
+      previewBox.style.display = "block";
+
+    }
+  );
+
+
+  // حذف الصورة
+  deleteImage.addEventListener(
+    "click",
+    function() {
+
+      paymentImage.value = "";
+
+      imagePreview.src = "";
+
+      previewBox.style.display = "none";
+
+    }
+  );
+
+
+  // تسجيل الطلب
+  document
+    .getElementById("registrationForm")
+    .addEventListener(
+      "submit",
+      function(event) {
 
         event.preventDefault();
 
@@ -579,87 +639,81 @@
             .value
             .trim();
 
+
         if (!name) {
 
           alert("من فضلك اكتب الاسم.");
 
           return;
+
         }
 
-        // التأكد من وجود صورة
-        const image =
-          document
-            .getElementById("paymentImage")
-            .files[0];
 
-        if (!image) {
-
-          alert("من فضلك أضف صورة إيصال التحويل.");
-
-          return;
-        }
-
-        // إنشاء رقم طلب
         const orderNumber =
           "REG-" +
           Date.now()
             .toString()
             .slice(-8);
 
-        // عرض النتيجة
+
         document
           .getElementById("resultName")
           .textContent =
           "مرحبًا " + name;
+
 
         document
           .getElementById("orderNumber")
           .textContent =
           orderNumber;
 
-        // إخفاء النموذج
+
         document
           .getElementById("registrationCard")
-          .style.display = "none";
+          .style.display =
+          "none";
 
-        // إظهار النتيجة
+
         document
           .getElementById("successBox")
-          .style.display = "block";
+          .style.display =
+          "block";
+
 
         window.scrollTo({
           top: 0,
           behavior: "smooth"
         });
 
+      }
+    );
+
+
+  // نسخ رقم المحفظة
+  function copyWallet() {
+
+    navigator.clipboard
+      .writeText(walletNumber)
+      .then(function() {
+
+        alert(
+          "تم نسخ رقم المحفظة: " +
+          walletNumber
+        );
+
+      })
+      .catch(function() {
+
+        alert(
+          "رقم المحفظة: " +
+          walletNumber
+        );
+
       });
 
+  }
 
-    // نسخ رقم المحفظة
-    function copyWallet() {
-
-      navigator.clipboard
-        .writeText(walletNumber)
-        .then(function() {
-
-          alert(
-            "تم نسخ رقم المحفظة: " +
-            walletNumber
-          );
-
-        })
-        .catch(function() {
-
-          alert(
-            "رقم المحفظة: " +
-            walletNumber
-          );
-
-        });
-
-    }
-
-  </script>
+</script>
 
 </body>
 </html>
