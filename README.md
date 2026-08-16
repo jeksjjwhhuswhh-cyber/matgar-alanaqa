@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>العمالة غير المنتظمة 2026</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f3f6f9;
+      color: #222;
+    }
+
+    header {
+      background: #075985;
+      color: white;
+      text-align: center;
+      padding: 28px 15px;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .notice {
+      max-width: 850px;
+      margin: 20px auto;
+      padding: 13px;
+      background: #fff3cd;
+      color: #664d03;
+      border: 1px solid #ffecb5;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: auto;
+      padding: 0 15px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.08);
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #075985;
+      text-align: center;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccd3da;
+      border-radius: 7px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #075985;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .fee {
+      background: #eef7ff;
+      border: 1px solid #b9ddf7;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .fee-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .amount {
+      display: block;
+      font-size: 30px;
+      font-weight: bold;
+      color: #075985;
+      margin: 8px 0 15px;
+    }
+
+    .wallet-label {
+      margin-bottom: 8px;
+    }
+
+    .wallet-number {
+      direction: ltr;
+      display: inline-block;
+      font-size: 22px;
+      font-weight: bold;
+      color: #075985;
+      background: white;
+      padding: 10px 15px;
+      border-radius: 7px;
+      border: 1px solid #c7ddea;
+      letter-spacing: 1px;
+    }
+
+    .copy-btn {
+      width: auto;
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 14px;
+      background: #198754;
+    }
+
+    .copy-btn:hover {
+      background: #157347;
+    }
+
+    .payment-info {
+      margin-top: 15px;
+      padding: 12px;
+      background: #fff;
+      border-radius: 7px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .main-btn {
+      width: 100%;
+      border: 0;
+      padding: 14px;
+      border-radius: 8px;
+      background: #075985;
+      color: white;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    .main-btn:hover {
+      background: #064e73;
+    }
+
+    .success {
+      display: none;
+      text-align: center;
+      padding: 25px;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 10px;
+      color: #065f46;
+      margin-bottom: 20px;
+    }
+
+    .success h2 {
+      color: #065f46;
+    }
+
+    .order {
+      background: white;
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 7px;
+      margin: 10px 0;
+      font-weight: bold;
+      direction: ltr;
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+      padding: 25px 15px;
+    }
+
+    @media (max-width: 650px) {
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 23px;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      .wallet-number {
+        font-size: 19px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- رأس الموقع -->
+  <header>
+    <h1>العمالة غير المنتظمة 2026</h1>
+    <p>خدمة تسجيل إلكترونية</p>
+  </header>
+
+
+  <main class="container">
+
+    <!-- تنبيه مهم -->
+    <div class="notice">
+      
+    </div>
+
+
+    <!-- نموذج التسجيل -->
+    <div class="card" id="registrationCard">
+
+      <h2>تسجيل البيانات</h2>
+
+      <form id="registrationForm">
+
+        <div class="row">
+
+          <div class="field">
+            <label for="name">الاسم الكامل</label>
+
+            <input
+              type="text"
+              id="name"
+              placeholder="اكتب الاسم الكامل"
+              autocomplete="name"
+              required>
+          </div>
+
+
+          <div class="field">
+            <label for="phone">رقم الهاتف</label>
+
+            <input
+              type="tel"
+              id="phone"
+              placeholder="01xxxxxxxxx"
+              inputmode="numeric"
+              autocomplete="tel"
+              required>
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <div class="field">
+            <label for="governorate">المحافظة</label>
+
+            <select id="governorate" required>
+
+              <option value="">
+                اختر المحافظة
+              </option>
+
+              <option>القاهرة</option>
+              <option>الجيزة</option>
+              <option>القليوبية</option>
+              <option>الإسكندرية</option>
+              <option>الشرقية</option>
+              <option>الدقهلية</option>
+              <option>البحيرة</option>
+              <option>المنوفية</option>
+              <option>الغربية</option>
+              <option>كفر الشيخ</option>
+              <option>دمياط</option>
+              <option>بورسعيد</option>
+              <option>الإسماعيلية</option>
+              <option>السويس</option>
+              <option>الفيوم</option>
+              <option>بني سويف</option>
+              <option>المنيا</option>
+              <option>أسيوط</option>
+              <option>سوهاج</option>
+              <option>قنا</option>
+              <option>الأقصر</option>
+              <option>أسوان</option>
+              <option>مطروح</option>
+              <option>الوادي الجديد</option>
+              <option>شمال سيناء</option>
+              <option>جنوب سيناء</option>
+
+            </select>
+          </div>
+
+
+          <div class="field">
+            <label for="job">المهنة</label>
+
+            <input
+              type="text"
+              id="job"
+              placeholder="مثال: عامل بناء"
+              required>
+          </div>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="address">
+            العنوان
+          </label>
+
+          <textarea
+            id="address"
+            placeholder="اكتب العنوان"
+            required></textarea>
+
+        </div>
+
+
+        <!-- الرسوم والمحفظة -->
+        <div class="fee">
+
+          <div class="fee-title">
+            رسوم التسجيل
+          </div>
+
+          <span class="amount">
+            30 جنيه
+          </span>
+
+
+          <div class="wallet-label">
+            رقم المحفظة لتحويل الرسوم:
+          </div>
+
+
+          <div class="wallet-number" id="walletNumber">
+            01092166752
+          </div>
+
+
+          <br>
+
+
+          <button
+            type="button"
+            class="main-btn copy-btn"
+            onclick="copyWallet()">
+
+            📋 نسخ رقم المحفظة
+
+          </button>
+
+
+          <div class="payment-info">
+
+            بعد إتمام التحويل، احتفظ بإيصال الدفع
+            للرجوع إليه عند الحاجة.
+
+            <br><br>
+
+            <strong>
+            
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="main-btn">
+
+          متابعة التسجيل
+
+        </button>
+
+      </form>
+
+    </div>
+
+
+    <!-- نتيجة التسجيل -->
+    <div class="success" id="successBox">
+
+      <h2>
+        تم تسجيل الطلب بنجاح ✅
+      </h2>
+
+
+      <p id="resultName"></p>
+
+
+      <p>
+        رقم الطلب:
+      </p>
+
+
+      <div
+        class="order"
+        id="orderNumber">
+      </div>
+
+
+      <p>
+        رسوم التسجيل:
+        <strong>30 جنيه</strong>
+      </p>
+
+
+      <p>
+        رقم المحفظة:
+        <strong dir="ltr">
+          01092166752
+        </strong>
+      </p>
+
+
+      <button
+        type="button"
+        class="main-btn"
+        onclick="copyWallet()">
+
+        📋 نسخ رقم المحفظة
+
+      </button>
+
+    </div>
+
+  </main>
+
+
+  <footer>
+
+    العمالة غير المنتظمة 2026
+    <br>
+    خدمة تسجيل إلكترونية 
+
+  </footer>
+
+
+  <script>
+
+    // رقم المحفظة
+    const walletNumber = "01092166752";
+
+
+    // تسجيل الطلب
+    document
+      .getElementById("registrationForm")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        const name =
+          document
+            .getElementById("name")
+            .value
+            .trim();
+
+
+        if (!name) {
+          alert("من فضلك اكتب الاسم.");
+          return;
+        }
+
+
+        // إنشاء رقم طلب
+        const orderNumber =
+          "REG-" +
+          Date.now()
+            .toString()
+            .slice(-8);
+
+
+        // عرض النتيجة
+        document
+          .getElementById("resultName")
+          .textContent =
+          "مرحبًا " + name;
+
+
+        document
+          .getElementById("orderNumber")
+          .textContent =
+          orderNumber;
+
+
+        // إخفاء النموذج
+        document
+          .getElementById("registrationCard")
+          .style.display = "none";
+
+
+        // إظهار النتيجة
+        document
+          .getElementById("successBox")
+          .style.display = "block";
+
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+      });
+
+
+    // نسخ رقم المحفظة
+    function copyWallet() {
+
+      navigator.clipboard
+        .writeText(walletNumber)
+        .then(function() {
+
+          alert(
+            "تم نسخ رقم المحفظة: " +
+            walletNumber
+          );
+
+        })
+        .catch(function() {
+
+          alert(
+            "رقم المحفظة: " +
+            walletNumber
+          );
+
+        });
+
+    }
+
+  </script>
+
+</body>
+</html>
